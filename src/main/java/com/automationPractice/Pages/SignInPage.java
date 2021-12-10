@@ -23,16 +23,17 @@ public class SignInPage extends TestBase {
 	@FindBy(css = "button[type='submit']")
 	WebElement login;
 
-	public void loginEmail() {
-		loginEmail.sendKeys("wiolet@gmail.com");
+	public void loginEmail(String email) {
+		loginEmail.sendKeys("email");
 	}
 
-	public void logoinPassword() {
-		logoinPassword.sendKeys("abc@123");
+	public void logoinPassword(String password) {
+		logoinPassword.sendKeys("password");
 	}
 
-	public void login() {
+	public DashboardPage login() {
 		login.submit();
-	}
+		return new DashboardPage();
+	}	
 
 }
