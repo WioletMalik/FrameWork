@@ -24,16 +24,16 @@ public class SignInPage extends TestBase {
 	WebElement login;
 
 	public void loginEmail(String email) {
-		loginEmail.sendKeys("email");
+		loginEmail.sendKeys(email);
 	}
 
 	public void logoinPassword(String password) {
-		logoinPassword.sendKeys("password");
+		logoinPassword.sendKeys(password);
 	}
 
 	public DashboardPage login() {
 		login.submit();
 		return new DashboardPage();
-	}	
+	}
 
 }

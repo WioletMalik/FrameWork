@@ -1,5 +1,7 @@
 package com.automationPractie.PageTest;
 
+import org.testng.annotations.Test;
+import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,16 +21,8 @@ public class SignInPageTest extends TestBase {
 
 	@Test
 	public void enterEmail() {
-		sp.loginEmail("jginotra81@gmail.com");
-	}
-
-	@Test
-	public void enterPassword() {
+		sp.loginEmail("jginotra82@gmail.com");
 		sp.logoinPassword("abc@123");
-	}
-
-	@Test
-	public void login() {
 		sp.login();
 	}
 

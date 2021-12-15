@@ -36,7 +36,7 @@ public class LandingPage extends TestBase {
 	@FindBy(css = "button[type='submit']")
 	WebElement signUp;
 
-	public void firstName() {
+	public void firstName(String name) {
 
 		firstName.sendKeys("Wiolet");
 	}
