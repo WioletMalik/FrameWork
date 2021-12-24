@@ -4,6 +4,8 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -25,27 +27,28 @@ public class AccountsOverviewPageTest extends TestBase {
 	public void initilise() {
 		setUp();
 		wc = new WelcomeOnlineBankingPage();
-		ap = wc.submit("Jitin", "abc@123");
-		
+		ap = wc.submit("Next", "abc@123");
+
 	}
 
 	@Test
 	public void verifyAccountBalance() {
+
 		String actualBalance = ap.getAccountBalance();
-		AssertJUnit.assertTrue(actualBalance.contains("$515.50"));
+		AssertJUnit.assertTrue(actualBalance.contains("$4900.00"));
 
-	}
-
-	@Test
-	public void openNewAccount() {
-		op = ap.openNewAccount();
-		op.selectAccount();
-		op.selectExistingAccount();
-		op.openNewAccount();
-		op.accountOverview();
-		String newBalanceinNewAccount = op.balanceInNewAccount();
-		AssertJUnit.assertEquals(newBalanceinNewAccount, "$100.00");
+		String verifyNewAccount = ap.verifyNewAccount();
+		Assert.assertEquals(verifyNewAccount, "22224");
 		
+		String loanApprovedBy = ap.getLoanProviderInfo();
+		AssertJUnit.assertTrue(loanApprovedBy.contains("Wealth"));
+
+		String statusOfLoan = ap.getloanStatus();
+		AssertJUnit.assertEquals(statusOfLoan, "Approved");
+
+		String newAccountNumber = ap.getNewAccountNumber();
+		AssertJUnit.assertEquals(newAccountNumber, "25221");
+
 	}
 
 	@AfterMethod

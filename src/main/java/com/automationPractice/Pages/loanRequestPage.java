@@ -41,7 +41,7 @@ public class loanRequestPage extends TestBase {
 
 	public void selectAccount() {
 		Select select = new Select(selectaccount);
-		select.selectByIndex(1);
+		select.selectByIndex(0);
 		apply.submit();
 	}
 

@@ -1,5 +1,8 @@
 package com.automationPractice.Pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,6 +23,37 @@ public class AccountsOverviewPage extends TestBase {
 
 	@FindBy(css = "#leftPanel>ul>li:nth-child(7)>a")
 	WebElement requestLoan;
+	
+	@FindBy(id = "loanProviderName")
+	WebElement loanProvider;
+
+	@FindBy(id = "loanStatus")
+	WebElement loanStatus;
+
+	@FindBy(id = "newAccountId")
+	WebElement newAccountNumber;
+
+	public String verifyNewAccount() {
+
+		String newAC = "22224";
+
+		List<WebElement> rows = wd.findElements(By.xpath("//tbody/tr"));
+		int rowCount = rows.size();
+
+		String beforeXpath = "//tbody/tr[";
+		String afterXpath = "]/td[1]";
+
+		for (int i = 1; i <= rowCount; i++) {
+			String actualXpath = beforeXpath + i + afterXpath;
+			WebElement newAccountNumber = wd.findElement(By.xpath(actualXpath));
+			if (newAccountNumber.getText().equals(newAC)) {
+				newAC = newAccountNumber.getText();
+
+			}
+		}
+
+		return newAC;
+	}
 
 	public String getAccountBalance() {
 		String balance = accountBalance.getText();
@@ -36,4 +70,20 @@ public class AccountsOverviewPage extends TestBase {
 		return new loanRequestPage();
 
 	}
+	
+
+	public String getLoanProviderInfo() {
+		String loanProviderName = loanProvider.getText();
+		return loanProviderName;
+	}
+
+	public String getloanStatus() {
+		String getloanStatus = loanStatus.getText();
+		return getloanStatus;
+	}
+
+	public String getNewAccountNumber() {
+		String NewloanAccount = newAccountNumber.getText();
+		return NewloanAccount;
+	} 
 }
